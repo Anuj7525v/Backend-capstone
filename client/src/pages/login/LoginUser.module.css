@@ -1,0 +1,114 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+.left {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  
+}
+
+.details {
+  width: 70%;
+  position: absolute;
+  top: 25px;
+
+  padding: 10px;
+}
+.leftHeader {
+  position: relative;
+}
+.leftH1 {
+  font-family: DM Sans;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 57.61px;
+  width: 501px;
+  height: 58px;
+  top: 209px;
+  left: 80px;
+}
+.leftHeader p {
+  font-family: DM Sans;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 30.24px;
+  position: absolute;
+  top: 28px;
+}
+
+.input {
+  width: 80%;
+  padding: 10px 5px;
+  margin: 10px 0px;
+  border: 2px solid #c2c2c2;
+  border-radius: 5px;
+  font-family: DM Sans;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28.8px;
+}
+
+.leftBtn button {
+  width: 220px;
+  height: 63.92px;
+  top: 553px;
+  left: 80px;
+  border-radius: 5px;
+  background: #ed5353;
+  border: 2px solid #ed5353;
+  font-family: DM Sans;
+  font-size: 27.79px;
+  font-weight: 700;
+  line-height: 40.03px;
+  text-align: center;
+  color: white;
+}
+.leftPara2 {
+  font-family: DM Sans;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 30.24px;
+}
+.leftPara2 a {
+  color: black;
+  font-family: DM Sans;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 30.24px;
+  text-align: center;
+}
+.right {
+  width: 40%;
+  position: relative;
+}
+.rightH2 {
+  position: absolute;
+  font-family: DM Sans;
+font-size: 40px;
+font-weight: 500;
+line-height: 57.61px;
+width: 465px;
+height: 58px;
+top: 1.4em;
+color: white;
+text-align: center;
+left: 1em;
+
+
+}
+.img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.img img {
+  width: 100%;
+  height: 100%;
+}
