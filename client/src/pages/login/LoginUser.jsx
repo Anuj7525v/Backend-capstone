@@ -1,10 +1,30 @@
 import React, { useState } from 'react';
 import styles from './LoginUser.module.css';
 import avatar from '../../assets/log.png';
-function Loginuser() {
-    const [email,setEmail] = useState();
-    const [password,setPassword] = useState();
-    
+import { useNavigate } from 'react-router-dom';
+import {login} from "../../services/auth";
+
+
+
+
+
+function LoginUser() {
+    const [data,setData] = useState({
+        email:"", password:"",
+    });
+    const navigate = useNavigate();
+    const handleChange = (e) => {
+        setData({...data,[e.target.name]:e.target.value});
+    };
+    const handleLogin = (e) => {
+        e.preventDefault();
+        login(data).then((response) => {
+            alert(`Welcome, ${response.data.name}`);
+            localStorage.setItem("token",response.data.token);
+            localStorage.setItem("userId",response.data.userId);
+            navigate("/jobs");
+        })
+    }
     return (
         <>
             <div className={styles.page}>
@@ -15,32 +35,35 @@ function Loginuser() {
                             <p className={styles.leftPara}>Your personal job finder is here</p>
                         </div> <br />
                         <div className={styles.form}>
-                            <div className="form-group">
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Email"
-                                    className={styles.input}
-                                  value={email}
-                                       onChange={(e) => setEmail(e.target.value)}
-                                />
+                            <form  onSubmit={handleLogin}>
                                 <div className="form-group">
                                     <input
-                                        type="password"
-                                        name="password"
-                                        placeholder="Password"
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email"
                                         className={styles.input}
-                                       value={password}
-                                     onChange={(e) => setPassword(e.target.value)}
+                                        // value={email}
+                                        onChange={handleChange}
                                     />
+                                    <div className="form-group">
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            placeholder="Password"
+                                            className={styles.input}
+                                            //   value={password}
+                                            onChange={handleChange}
+                                        />
 
-                                </div> <br />
+                                    </div> <br />
 
-                            </div>
+                                </div>
+                                <div className={styles.leftBtn}>
+                                    <button>Sign in</button>
+                                </div>
+                            </form>
                         </div>
-                        <div className={styles.leftBtn}>
-                            <button>Sign in</button>
-                        </div>
+
                         <div className={styles.leftPara2}>
                             Don't have an account? <a href='#'>Sign Up</a>
                         </div>
@@ -59,4 +82,4 @@ function Loginuser() {
 
 
 
-export default Loginuser;
+export default LoginUser;

@@ -4,7 +4,7 @@ const router = express.Router();
 const {registerUser,loginUser,allUsers} = require("../controllers/user");
 
 router.get('/',(req,res) => {
-    res.send("Auth route!").status(200);
+    res.status(200).send("Auth route!");
 });
 
 
