@@ -24,7 +24,7 @@ function LoginUser() {
             localStorage.setItem("userId",response.data.userId);
             navigate("/jobs");
         })
-    }
+    };
     return (
         <>
             <div className={styles.page}>
@@ -65,7 +65,7 @@ function LoginUser() {
                         </div>
 
                         <div className={styles.leftPara2}>
-                            Don't have an account? <a href='#'>Sign Up</a>
+                            Don't have an account? <a href=''>Sign Up</a>
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const getAlljobs = async () => {
+export const getAlljobs = async ({skills}) => {
     try {
         const response = await axios.get(
-            "http://localhost:4000/api/job/all"
+            `http://localhost:4000/api/job/all?skills=${skills}`
         );
         return response;
     }

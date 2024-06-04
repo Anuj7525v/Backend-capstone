@@ -1,72 +1,73 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Createjob.module.css';
 import { useNavigate } from 'react-router-dom';
-import {  createJob,updateJob,getJobById } from '../../services/jobs';
+import { createJob, updateJob, getJobById } from '../../services/jobs';
 
 function Createjob() {
-    const url = new URL(window.location.href);
-    const isEdit = url.pathname.includes("edit");
-    const[data,setData] = useState({
-        title:"",
-        companyName:"",
-        location:"",
-        salary:"",
-        description:"",
-        locationType:"",
-        jobType:"",
-        skills:"",    });
+  const url = new URL(window.location.href);
+  const isEdit = url.pathname.includes("edit");
+  const [data, setData] = useState({
+    title: "",
+    companyName: "",
+    location: "",
+    salary: "",
+    description: "",
+    locationType: "",
+    jobType: "",
+    skills: "",
+  });
 
-        const handleChange = (e) => {
-            setData((data) => {
-                return {...data,[e.target.name]:e.target.value};
-            });
-        };
-        const navigate = useNavigate();
-        useEffect(()=>{
-            const token = localStorage.getItem("token");
-            if(!token) {
-                navigate("/login");
-            }
-            else{
-                if(isEdit){
-                    const id = url.pathname.split("/")[2];
-                    console.log(id);
-                    const res = getJobById(id);
-                    res.then((response) => {
-                        const skills = response.data.skills.join(',');
-                        setData({...response.data,skills});
-                    });
-                }
-            }
-        }, []);
+  const handleChange = (e) => {
+    setData((data) => {
+      return { ...data, [e.target.name]: e.target.value };
+    });
+  };
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+    else {
+      if (isEdit) {
+        const id = url.pathname.split("/")[2];
+        console.log(id);
+        const res = getJobById(id);
+        res.then((response) => {
+          const skills = response.data.skills.join(',');
+          setData({ ...response.data, skills });
+        });
+      }
+    }
+  }, []);
 
-      const handleSubmit = async (e) => {
-            e.preventDefault();
-            if(isEdit) {
-              const id = url.pathname.split("/")[2];
-                const response = await updateJob(id,data);
-                if(response.status ===200){
-                    alert("Job updated successfully");
-                    navigate("/jobs");
-                }
-                else{
-                    alert("Error updating job");
-                }   
-            }
-            else{
-                const response = await createJob(data);
-                alert(response.data);
-                if(response.status === 201){
-                    navigate("/jobs");
-                }
-            }
-        };
-
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isEdit) {
+      const id = url.pathname.split("/")[2];
+      const response = await updateJob(id, data);
+      if (response.status === 200) {
+        alert("Job updated successfully");
+        navigate("/jobs");
+      }
+      else {
+        alert("Error updating job");
+      }
+    }
+    else {
+      const response = await createJob(data);
+      alert(response.data);
+      if (response.status === 201) {
+        navigate("/jobs");
+      }
+    }
+  };
 
 
-    return (
-        <>
+
+
+  return (
+    <>
       Create Job
       <form
         onSubmit={handleSubmit}
@@ -167,7 +168,7 @@ function Createjob() {
         )}
       </form>
     </>
-    );
+  );
 }
 
 export default Createjob;
