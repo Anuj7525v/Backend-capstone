@@ -10,13 +10,14 @@ const path = require("path");
 const dotenv = require("dotenv");
 const app = express();
 const authRoutes = require("./routes/auth");
-const cors = require("cors");
 const jobRoutes = require("./routes/job");
+const cors = require("cors");
+
 app.use(cors({
     origin:"http://localhost:3000"
 }));
-const logStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: 'a', })
-const errorStream = fs.createWriteStream(path.join(__dirname, "error.txt"), { flags: 'a', })
+const logStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: 'a', });
+const errorStream = fs.createWriteStream(path.join(__dirname, "error.txt"), { flags: 'a', });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
