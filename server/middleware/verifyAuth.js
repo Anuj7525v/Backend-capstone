@@ -18,4 +18,4 @@ const verifyAuth = (req, res, next) => {
     }
 };
 
-module.exports = {verifyAuth};
+module.exports = verifyAuth;

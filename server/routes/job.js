@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 const { createJob, getAllJobs, getJobById, updateJob } = require("../controllers/job");
-const { verifyAuth } = require("../middleware/verifyAuth");
+const  verifyAuth  = require("../middleware/verifyAuth");
 
 router.get('/', (req, res) => {
     res.status(200).send("Job Route!");
