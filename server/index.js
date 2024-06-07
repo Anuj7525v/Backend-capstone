@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const fs = require("fs");
-const port = 4000;
+const port = 5000;
 const env = require("dotenv");
 env.config();
 // npm run dev == for running nodemon .
