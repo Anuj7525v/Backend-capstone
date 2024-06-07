@@ -41,7 +41,7 @@ const createJob = async (req, res, next) => {
     }
 };
 const getAllJobs = async (req, res, next) => {
-    const { skills } = req.query;
+    const { skills } = req.query; // skills = "javascript, express,"
     const skillsArray =
       skills !== undefined
         ? skills.split(",").map((skill) => skill.trim())
